@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealMasterGames</title>
+    <style>
+        :root {
+            --bg-main: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1f2937;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --accent-color: #2563eb;
+            --card-radius: 12px;
+            /* Variables para Scrollbar */
+            --scrollbar-thumb: #374151; 
+            --scrollbar-track: #1f2937;
+            /* Variables de Color (Rojo para Limpiar) */
+            --danger-color: #ef4444; 
+            
+            /* Nuevas variables de color para los Protips */
+            --protip-gray: #374151; 
+            --steam-light-blue: #66c0f4;     /* Azul claro para Steam ID */
+            --steamdb-light-green: #90ee90;  /* Verde claro para SteamDB ID */
+        }
+
+        /* --- ESTILOS DE SCROLLBAR (MODO OSCURO) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            /* Se ha eliminado overflow-x: hidden de aquí para evitar conflictos */
+        }
+
+        /* Para Webkit (Chrome, Safari) */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+        /* Para Firefox */
+        .filter-options { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar-width: thin; }
+
+        body { 
+            color: var(--text-primary); 
+            min-height: 100vh;
+            background-image: url('image/fondo.png'); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            position: relative; 
+            z-index: 1; 
+            overflow-x: hidden; /* Aseguramos que solo el body tenga este overflow */
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; 
+            background-color: rgba(10, 14, 23, 0.8);
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(7px);
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+        .hero-search {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            background: radial-gradient(circle at top, rgba(37, 99, 235, 0.1), transparent 50%);
+        }
+
+        .hero-title { font-size: 3rem; margin-bottom: 10px; font-weight: 800; letter-spacing: -1px; }
+        .hero-subtitle { color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem; }
+
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 18px 25px 18px 55px;
+            border-radius: 30px;
+            border: 1px solid var(--bg-tertiary);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .search-input:focus { border-color: var(--accent-color); }
+        .search-icon-placeholder { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); opacity: 0.7; }
+
+        /* --- CONTENEDOR PROTIPS --- */
+        .search-protip-container {
+            max-width: 700px;
+            margin: -30px auto 40px auto; 
+            text-align: center; 
+        }
+
+        .protip-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .protip-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center; 
+        }
+
+        .protip-tag {
+            padding: 6px 12px;
+            border-radius: 6px; 
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: none; 
+            cursor: default; 
+            border: 1px solid; 
+        }
+
+        .protip-tag.gray {
+            background-color: transparent;
+            color: var(--text-secondary);
+            border-color: var(--protip-gray);
+        }
+
+        .protip-tag.blue {
+            background-color: transparent;
+            color: var(--steam-light-blue);
+            border-color: var(--steam-light-blue);
+        }
+
+        .protip-tag.steamdb {
+            background-color: transparent;
+            color: var(--steamdb-light-green);
+            border-color: var(--steamdb-light-green);
+        }
+        /* --- FIN CONTENEDOR PROTIPS --- */
+
+
+        /* ---------------------------------------------------- */
+        /* --- CONTENEDORES DE FILTRO Y BOTÓN (CORRECCIÓN BUG SCROLL) --- */
+        /* ---------------------------------------------------- */
+        
+        .filter-placement {
+            text-align: center;
+            margin-top: -20px; 
+            margin-bottom: 20px; 
+            z-index: 9999; 
+            position: relative; 
+        }
+        
+        .filter-dropdown-container { 
+            position: relative; 
+            display: inline-block; 
+        }
+        
+        .filter-button {
+            padding: 10px 24px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.2s; 
+            outline: none; 
+            box-shadow: none;
+        }
+
+        .filter-button:hover { 
+            background-color: var(--accent-color); 
+        }
+        
+        .filter-button:active {
+            background-color: var(--accent-color);
+            transform: none !important; 
+            transition: none !important; 
+            box-shadow: none !important; 
+        }
+
+        /* --- DROPDOWN DE FILTROS: Base para la animación --- */
+        #filterDropdown {
+            position: absolute;
+            top: 100%; 
+            margin-top: 10px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 0; /* padding 0 para que la animación funcione con max-height */
+            max-width: 1100px; 
+            width: 90vw; 
+            min-width: 700px; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            z-index: 9998; 
+            text-align: left;
+            overflow: hidden; /* Oculta el contenido durante la animación */
+            
+            /* PROPIEDADES INICIALES (OCULTO) */
+            max-height: 0; 
+            opacity: 0;
+            visibility: hidden; /* Usamos visibility en lugar de display: none para que la transición funcione */
+            
+            /* ANIMACIÓN SUAVE Y RÁPIDA (0.3 segundos) */
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s;
+        }
+        
+        /* Contenido interno del dropdown para aplicar el padding real */
+        #filterDropdown > div:not(.filter-header) {
+            padding: 0 15px 15px 15px; /* Agregamos el padding que quitamos arriba */
+        }
+        
+        /* Contenido del header (solo necesita padding superior) */
+        #filterDropdown .filter-header {
+            padding: 15px 15px 0 15px;
+        }
+
+        /* ESTADO VISIBLE: Valores finales para mostrar el menú */
+        #filterDropdown.show {
+            max-height: 600px; /* Suficientemente grande para contener todo el contenido */
+            opacity: 1; 
+            visibility: visible;
+            /* La transición de transform se mantiene para la corrección de posición */
+            transform: translateX(-50%); 
+        }
+        
+        @media (max-width: 768px) {
+             #filterDropdown { min-width: 90vw; }
+        }
+
+        /* Contenedor Flex para las 3 columnas principales */
+        .filter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .filter-header { display: flex; justify-content: flex-start; margin-bottom: 10px; padding: 0 5px; grid-column: 1 / 4; }
+        
+        /* --- BOTÓN LIMPIAR FILTROS (ROJO) --- */
+        .clear-filters-btn {
+            background: transparent;
+            color: var(--danger-color); 
+            border: 1px solid var(--danger-color);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600; 
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .clear-filters-btn:hover {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .filter-column { display: flex; flex-direction: column; padding-right: 15px; border-right: 1px solid var(--bg-tertiary); }
+        .filter-column:last-child { border-right: none; padding-right: 0; }
+        
+        /* Estilos de la barra de búsqueda dentro de los filtros */
+        .filter-search-input {
+            width: 100%; padding: 8px 10px; margin-bottom: 10px;
+            border-radius: 5px; border: 1px solid var(--bg-tertiary);
+            background-color: var(--bg-tertiary); color: var(--text-primary);
+            font-size: 0.9rem; outline: none;
+        }
+
+        .filter-group-title {
+            color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px; margin-bottom: 5px;
+            padding-left: 5px; border-bottom: 1px solid var(--bg-tertiary); padding-bottom: 3px;
+        }
+
+        .filter-options {
+            display: flex; flex-wrap: wrap; gap: 8px; padding: 5px 0;
+            max-height: 250px; overflow-y: auto; 
+        }
+        
+        /* Estilos para las sub-columnas de filtros */
+        #genreFilters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; } 
+        #publisherFilters { display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; } 
+        #yearFilters { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; } 
+
+        /* Estilo para los filtros individuales */
+        .filter-option {
+            background-color: var(--bg-tertiary); color: var(--text-secondary);
+            padding: 6px 5px; border-radius: 15px; cursor: pointer;
+            font-size: 0.85rem; transition: background-color 0.2s, color 0.2s;
+            border: 1px solid transparent; text-align: center;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+
+        .filter-option.active { background-color: var(--accent-color); color: white; border-color: white; }
+
+
+        /* Estilos para filtros alfabéticos */
+        .browse-title { text-align: center; font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; }
+        .alphabet-filter-container { display: flex; justify-content: center; margin-bottom: 40px; }
+        .alphabet-filter-container .filter-options {
+            display: flex; flex-wrap: wrap; gap: 5px; padding: 0; justify-content: center; 
+            max-height: none; overflow-x: hidden; 
+        }
+
+        .alphabet-filter-container .filter-option {
+            background-color: var(--bg-tertiary); color: var(--text-secondary);
+            padding: 8px 14px; border-radius: 6px; cursor: pointer;
+            font-size: 0.9rem; font-weight: 600; transition: background-color 0.2s, color 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .alphabet-filter-container .filter-option.active { background-color: var(--accent-color); color: white; border-color: white; }
+
+
+        .games-section-header {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            margin-bottom: 25px; 
+            padding-top: 20px; 
+            border-top: 1px solid var(--bg-tertiary);
+        }
+        
+        .section-title { font-size: 1.5rem; }
+        .showing-count { color: var(--text-secondary); }
+
+        /* AJUSTE PARA 7 COLUMNAS EN PANTALLAS GRANDES */
+        .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 20px; }
+        @media (min-width: 1300px) { .games-grid { grid-template-columns: repeat(7, 1fr); } }
+
+
+        .game-card {
+            position: relative; z-index: 2; background: transparent;
+            border-radius: var(--card-radius); transition: transform 0.3s ease;
+            cursor: pointer; display: block; text-decoration: none; color: var(--text-primary); 
+        }
+        
+        .game-card.hidden { display: none; }
+        .game-card:hover { transform: translateY(-7px); }
+
+        .card-image-container {
+            position: relative; width: 100%; padding-top: 140%; 
+            background-color: var(--bg-secondary); border-radius: var(--card-radius);
+            overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .card-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        
+        /* --- ESTILOS PARA HOVER (Overlay de Info) --- */
+        .card-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+            display: flex; flex-direction: column; justify-content: flex-end; 
+            align-items: flex-start; padding: 15px; opacity: 0; 
+            transition: opacity 0.3s ease;
+        }
+        .game-card:hover .card-overlay { opacity: 1; }
+        
+        /* --- BOTÓN DE DESCARGA: Círculo Transparente con Contorno --- */
+        .download-btn-icon {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 55px; height: 55px; border-radius: 50%;
+            background: rgba(17, 24, 39, 0.7); color: white;
+            border: 2px solid var(--accent-color); 
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.5rem; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); z-index: 5;
+        }
+
+        /* OCULTAMOS EL NOMBRE BAJO LA PORTADA */
+        .card-info { display: none; } 
+        
+        /* --- POSICIONAMIENTO DE INFO AL HOVER --- */
+        .info-tag {
+            position: absolute; padding: 3px 6px; border-radius: 4px; 
+            font-size: 0.7rem; font-weight: bold; background: rgba(0,0,0,0.8); z-index: 5;
+        }
+        /* Primer genero (Superior Izquierda) */
+        .info-tag.genre { top: 10px; left: 10px; }
+        /* Año de lanzamiento (Inferior Izquierda) */
+        .info-tag.year { bottom: 10px; left: 10px; }
+        /* Peso (Inferior Derecha) */
+        .info-tag.weight { bottom: 10px; right: 10px; }
+
+        .info-name {
+            font-size: 0.85rem; font-weight: 700; width: 100%; text-align: center;
+            margin-bottom: 10px; white-space: normal; overflow: hidden; 
+            text-overflow: ellipsis; max-height: 2.5em; position: relative;
+            z-index: 5; text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); 
+        }
+        
+        .info-name:after { content: ''; display: block; height: 1em; }
+
+        /* --- ESTILOS DEL PIE DE PÁGINA --- */
+        .main-footer {
+            margin-top: 60px;
+            padding: 20px 20px 30px 20px;
+            text-align: center;
+            border-top: 1px solid var(--bg-tertiary);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background-color: var(--bg-secondary); 
+            /* Aseguramos que se extienda completamente */
+            width: 100%; 
+        }
+        .main-footer p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        .footer-creator, .footer-uploader {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .footer-date {
+            color: var(--accent-color); 
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-search">
+        <div class="container">
+            <h1 class="hero-title">RealMasterGames</h1>
+            <p class="hero-subtitle">Busca por Título o **Steam App ID**</p>
+
+            <div class="search-container">
+                <span class="search-icon-placeholder">🔍</span>
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar juego por nombre o ID (e.g., 1174180)...">
+            </div>
+            
+            <div class="search-protip-container">
+                <p class="protip-label">💡 Protip:</p>
+                <div class="protip-tags">
+                    <span class="protip-tag white">Nombre del juego xD</span>
+                    <span class="protip-tag blue">App ID de Steam</span>
+                    <span class="protip-tag steamdb">App ID de SteamDB</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="filter-placement">
+        <div class="filter-dropdown-container"> 
+            <button class="filter-button" id="toggleFilterBtn">
+                ⚙️ Filtros
+            </button>
+            
+            <div id="filterDropdown">
+                <div class="filter-header">
+                    <button class="clear-filters-btn" id="clearFiltersBtn">
+                        🧹 Limpiar Todos los Filtros
+                    </button>
+                </div>
+                <div class="filter-grid">
+                    
+                    <div class="filter-column">
+                        <div class="filter-group-title">Géneros</div>
+                        <input type="text" class="filter-search-input" id="genreSearch" placeholder="Buscar género...">
+                        <div class="filter-options" id="genreFilters">
+                            </div>
+                        
+                        <div class="filter-group-title" style="margin-top: 20px;">Publisher / Developer</div>
+                        <input type="text" class="filter-search-input" id="publisherSearch" placeholder="Buscar...">
+                        <div class="filter-options" id="publisherFilters">
+                            </div>
+                    </div>
+
+                    <div class="filter-column">
+                        <div class="filter-group-title">Año de Lanzamiento</div>
+                        <div class="filter-options" id="yearFilters">
+                            </div>
+                        
+                        <div class="filter-group-title" style="margin-top: 20px;">Modo de Juego</div>
+                        <div class="filter-options" id="modeFilters">
+                            </div>
+                    </div>
+                    
+                    <div class="filter-column">
+                        <div class="filter-group-title" style="margin-top: 20px;">Popularidad</div>
+                        <div class="filter-options" id="popularityFilters">
+                            </div>
+                        
+                        <div class="filter-group-title" style="margin-top: 20px;">Peso (MB/GB)</div>
+                        <div class="filter-options" id="sizeFilters">
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h3 class="browse-title">Buscar por Letra</h3>
+        <div class="alphabet-filter-container">
+            <div class="filter-options" id="alphabetFilters">
+                </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="games-section-header">
+            <h2 class="section-title">Catálogo Disponible</h2>
+            <div class="showing-count" id="countLabel">Mostrando 0 juegos</div>
+        </div>
+
+        <div class="games-grid" id="gamesGrid">
+            </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Página creada por <span class="footer-creator">あLG</span>.</p>
+        <p>Juegos subidos por <span class="footer-uploader">Raxxor</span></p>
+        <p>Fecha de creacion: <span class="footer-date">26/11/2025</span>.</p>
+    </footer>
+
+    <script src="Data/game-data.js"></script>
+    <script src="Data/filters.js"></script>
+    
+    <script>
+        // Lógica de JavaScript para controlar el menú de filtros
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('toggleFilterBtn');
+            const filterDropdown = document.getElementById('filterDropdown');
+
+            // 1. Alternar visibilidad al hacer clic en el botón
+            toggleButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que el clic se propague al documento
+                filterDropdown.classList.toggle('show');
+            });
+
+            // 2. Cerrar el menú si se hace clic fuera de él
+            document.addEventListener('click', (e) => {
+                // Verificamos si el clic no fue dentro del menú ni en el botón
+                if (filterDropdown.classList.contains('show') && 
+                    !filterDropdown.contains(e.target) && 
+                    !toggleButton.contains(e.target)) {
+                    filterDropdown.classList.remove('show');
+                }
+            });
+            
+            // 3. Evitar que los clics dentro del menú lo cierren inmediatamente
+            filterDropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+        
+        // Fuerza el desplazamiento a la parte superior al cargar la página
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+        });
+    </script>
+    
+</body>
+</html>

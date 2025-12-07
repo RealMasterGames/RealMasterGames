@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="detailTitle">Detalle del Juego</title>
+    <style>
+        /* ======================================= */
+        /* === Variables y Configuración Global === */
+        /* ======================================= */
+        :root {
+            /* Colores del proyecto */
+            --bg-main: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1f2937;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --accent-color: #2563eb; 
+            --danger-color: #ef4444; 
+            --success-color: #10b981; 
+            --card-radius: 8px;
+            --warning-color: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { 
+            background-color: var(--bg-main); 
+            color: var(--text-primary); 
+            min-height: 100vh;
+        }
+
+        /* Contenedor principal */
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        
+        a.back-button {
+            display: inline-block; margin: 20px 0; color: var(--text-secondary); 
+            text-decoration: none; font-weight: normal; transition: color 0.2s;
+        }
+        a.back-button:hover { color: var(--accent-color); }
+
+        /* --- 1. BANNER SUPERIOR --- */
+        .game-banner-container {
+            position: relative; height: 350px; overflow: hidden;
+        }
+        .banner-bg {
+            width: 100%; height: 100%; object-fit: cover; position: absolute;
+            filter: brightness(0.4) blur(5px); transform: scale(1.05);
+        }
+        .banner-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, var(--bg-main) 0%, rgba(10, 14, 23, 0.4) 60%, rgba(10, 14, 23, 0.6) 100%);
+        }
+
+        /* --- 2. TARJETA PRINCIPAL (FLOTANTE) - ESTRUCTURA DE PERFIL --- */
+        .header-content-wrapper {
+            position: relative; z-index: 10; max-width: 1200px; margin: 0 auto;
+            transform: translateY(-120px); 
+        }
+        .game-info-card {
+            background-color: var(--bg-secondary); border-radius: var(--card-radius); padding: 30px;
+            display: flex; gap: 30px; align-items: flex-start; box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            border: 1px solid var(--bg-tertiary);
+        }
+
+        /* Columna Izquierda (Portada y Botones) */
+        .cover-and-buttons {
+            display: flex; flex-direction: column; align-items: center;
+            width: 180px; min-width: 180px; 
+        }
+        .game-cover {
+            width: 100%; height: 250px; object-fit: cover; border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin-bottom: 15px;
+        }
+        .action-buttons {
+            display: flex; flex-direction: column; gap: 10px; width: 100%;
+        }
+        .download-button, .trailer-button {
+            padding: 10px 15px; border: none; border-radius: 4px; 
+            cursor: pointer; font-weight: 700; font-size: 0.95rem; 
+            transition: background-color 0.2s; text-align: center;
+        }
+        /* Los botones de descarga en la tarjeta principal serán ocultados o modificados por la nueva sección de links */
+        .download-button, .trailer-button {
+            display: none; /* Ocultar botones obsoletos en la tarjeta */
+        }
+        
+        /* Columna Derecha (Info) */
+        .info-group { flex-grow: 1; }
+        .game-title-detail { 
+            font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; 
+            line-height: 1.1;
+        }
+        
+        /* === Detalles en Línea (Plataforma, Metacritic, Raxxor) === */
+        .details-inline {
+            display: flex; flex-wrap: wrap; align-items: center;
+            gap: 15px 30px; margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--bg-tertiary);
+        }
+        .detail-item { display: flex; gap: 5px; align-items: center; font-size: 0.95rem; }
+        .detail-item .info-label { color: var(--text-secondary); font-weight: 600; }
+        .detail-item .info-value { color: var(--text-primary); font-weight: 500; }
+        .steam-rating { font-size: 0.95rem; display: flex; align-items: center; gap: 5px; color: var(--text-secondary); }
+        .steam-rating span { color: #4c8fe0; font-weight: 600; }
+        
+        /* Metacritic Score Box - BASE */
+        .metacritic-score-box {
+            position: relative; overflow: hidden; z-index: 1; 
+            padding: 8px 15px; 
+            border-radius: 4px; 
+            font-weight: 900; 
+            font-size: 1.2rem; 
+            color: black; 
+            text-shadow: none;
+            background-color: #d4d4d4; /* Color base para N/A */
+            transition: all 0.3s ease-out; 
+        }
+        /* RANGOS DE COLOR METACRITIC ESTÁNDAR */
+        .metacritic-score-box.high { background-color: #6c3; color: #111; }
+        .metacritic-score-box.mid { background-color: #fc3; color: #111; }
+        .metacritic-score-box.low { background-color: #f00; color: white; }
+        .metacritic-score-box.gold { 
+            background-color: #ffd700; 
+            box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.7); 
+            color: #4b4b4b; 
+            transform: scale(1.05); 
+        }
+        
+        @keyframes shine {
+            0% { left: -150%; }
+            100% { left: 150%; }
+        }
+        
+        .metacritic-score-box.gold::before { 
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: rotate(45deg); pointer-events: none; opacity: 0.8; z-index: 0; 
+            animation: shine 2s infinite linear; 
+        }
+
+        /* === Descripción Breve === */
+        #briefDescription {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        /* === Sección de Detalles de Lanzamiento === */
+        .release-details {
+            background-color: var(--bg-tertiary);
+            padding: 15px;
+            border-radius: 4px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 10px 20px;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent-color);
+        }
+        .release-detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .release-detail-item .label {
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .release-detail-item .value {
+            color: var(--text-primary);
+        }
+        .support-text {
+            color: var(--warning-color);
+            margin-top: 15px;
+            font-style: italic;
+            font-size: 0.9rem;
+            grid-column: 1 / -1; 
+        }
+        
+        /* --- 3. CONTENIDO PRINCIPAL (FLUJO ÚNICO) --- */
+        .main-content {
+            display: flex; flex-direction: column;
+            gap: 30px; 
+            margin-top: -60px; 
+            padding-bottom: 40px;
+            padding: 0 20px;
+            background-color: var(--bg-main); 
+        }
+        
+        /* Estilo para títulos de contenido que ahora están en el flujo único */
+        .main-content h3 {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--bg-tertiary);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        /* --- Sección de Links y Configuración (NUEVOS ESTILOS) --- */
+        .game-links-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--bg-tertiary);
+        }
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .download-link-btn {
+            padding: 10px 15px;
+            background-color: var(--success-color); 
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .download-link-btn:hover {
+            background-color: #0c9e6c;
+        }
+        /* Estilo específico para enlaces de parte (Part 1, Part 2) */
+        .download-link-btn.part-link {
+            background-color: var(--accent-color);
+        }
+        .download-link-btn.part-link:hover {
+            background-color: #1e52c7;
+        }
+
+        .config-details {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--bg-secondary);
+            border-radius: var(--card-radius);
+            border: 1px solid var(--bg-tertiary);
+        }
+        .config-item {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .config-item:last-child {
+            margin-bottom: 0;
+        }
+        .config-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .config-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+        .accent-text {
+            color: var(--success-color); 
+            font-weight: 700;
+        }
+        .install-steps {
+            white-space: pre-wrap; /* Mantiene saltos de línea y espacios */
+            background-color: var(--bg-tertiary);
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        /* --- FIN NUEVOS ESTILOS --- */
+
+
+        /* --- Capturas y Requisitos (Estilos modificados) --- */
+        #screenshots { display: flex; overflow-x: auto; gap: 10px; padding: 5px 0; }
+        #screenshots img { min-width: 450px; height: 250px; object-fit: cover; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .req-spec { line-height: 1.6; font-size: 0.95rem; margin-bottom: 8px; }
+        /* MODIFICACIÓN DE ESTILO: Empuja el valor de requisito a la derecha */
+        .req-spec b { color: var(--text-secondary); display: inline-block; width: 150px; } 
+
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .header-content-wrapper { transform: translateY(-80px); }
+            .game-info-card { flex-direction: column; align-items: center; text-align: center; padding: 20px; }
+            .cover-and-buttons { width: 100%; min-width: auto; margin-bottom: 20px;}
+            .game-cover { height: 200px; }
+            .action-buttons { flex-direction: row; justify-content: space-around;}
+            .game-title-detail { font-size: 2rem; }
+            .details-inline { justify-content: center; }
+            .release-details { grid-template-columns: 1fr; }
+            #screenshots img { min-width: 100%; height: 200px; }
+            .req-spec b { width: 100px; } /* Ajuste responsive si es necesario */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="game-banner-container">
+        <img id="headerBgImage" class="banner-bg" src="" alt="Banner de fondo del juego">
+        <div class="banner-overlay"></div>
+    </header>
+
+    <div class="container">
+        <div class="header-content-wrapper">
+            <a href="index.html" class="back-button">← Volver al Catálogo</a>
+            <div class="game-info-card">
+                
+                <div class="cover-and-buttons">
+                    <img id="gameCover" class="game-cover" src="" alt="Portada del juego">
+                    <div class="action-buttons">
+                        <button class="download-button" id="downloadButton">
+                            ⬇️ Descargar Ahora
+                        </button>
+                        <button class="trailer-button" id="trailerButton">
+                            ▶️ Mirar Trailer
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="info-group">
+                    <h1 class="game-title-detail" id="gameName">Cargando...</h1>
+                    
+                    <div class="details-inline">
+                        <div class="detail-item">
+                            <span class="info-label">Plataforma:</span>
+                            <span class="info-value">PC</span>
+                        </div>
+                         <div class="detail-item">
+                            <span class="info-label">Peso:</span>
+                            <span class="info-value" id="gamePeso"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="info-label">Metacritic:</span>
+                            <span class="metacritic-score-box na" id="gameMetacritic">N/A</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="steam-rating">
+                                <span>★</span>
+                                <span id="gameSteamRating">N/A Estrellas SteamDB</span>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="info-label">Subido por:</span>
+                            <span class="info-value">Raxxor</span> 
+                        </div>
+                    </div>
+                    
+                    <p id="briefDescription">...</p>
+                    
+                    <div class="release-details">
+                        <div class="release-detail-item">
+                            <span class="label">Release Group</span>
+                            <span class="value" id="releaseGroup">CSF CS.RIN</span>
+                        </div>
+                        <div class="release-detail-item">
+                            <span class="label">Genre</span>
+                            <span class="value" id="gameGenerosList"></span>
+                        </div>
+                        <div class="release-detail-item">
+                            <span class="label">Released</span>
+                            <span class="value" id="gameReleaseDate"></span>
+                        </div>
+                        <div class="release-detail-item">
+                            <span class="label">Publisher</span>
+                            <span class="value" id="gamePublisherDetails"></span>
+                        </div>
+                        <p class="support-text">
+                            Please support the developers - publishers by purchasing the game at <span id="supportPublisherName"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="main-content">
+            
+            <div>
+                <h3>Acerca del Juego</h3>
+                <p id="gameReview">...</p>
+            </div>
+
+            <section class="game-links-section">
+                <h3 class="section-subtitle">💾 Descargas y Configuración</h3>
+                <div class="links-grid" id="gameLinks">
+                    </div>
+                
+                <div class="config-details">
+                    <div class="config-item">
+                        <span class="config-label">Contraseña de Archivo:</span>
+                        <span class="config-value accent-text" id="gamePassword">N/A</span>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-label">Instrucciones de Instalación:</span>
+                        <pre class="config-value install-steps" id="gameInstallation">No hay instrucciones específicas.</pre>
+                    </div>
+                </div>
+            </section>
+            <div>
+                <h3>Requisitos Mínimos</h3>
+                <p class="game-subtitle" style="margin-bottom: 10px;">Especificaciones mínimas necesarias para jugar.</p>
+                <div id="gameRequisitos">
+                    <div class="req-spec"><b>SO:</b> <span id="reqOS"></span></div>
+                    <div class="req-spec"><b>Procesador:</b> <span id="reqCPU"></span></div>
+                    <div class="req-spec"><b>Memoria:</b> <span id="reqRAM"></span></div>
+                    <div class="req-spec"><b>Gráficos:</b> <span id="reqGPU"></span></div>
+                    <div class="req-spec"><b>Almacenamiento:</b> <span id="reqAlmacenamiento"></span></div>
+                    </div>
+            </div>
+
+            <div>
+                <h3>Capturas</h3>
+                <div id="screenshots">
+                    </div>
+                <p id="noScreenshots" style="color: var(--text-secondary); font-style: italic; display: none; text-align: center;">No hay capturas disponibles. Se muestra la portada.</p>
+            </div>
+            
+        </section>
+        
+        <a href="index.html" class="back-button">← Volver al Catálogo</a>
+    </div>
+
+    <script src="Data/game-data.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            window.scrollTo(0, 0); 
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('id');
+
+            // --- 1. Verificación y Carga de Datos ---
+            if (!gameId || typeof GAMES_DATA === 'undefined') {
+                document.getElementById('gameName').textContent = 'Error: ID o datos no disponibles.';
+                return;
+            }
+
+            const game = GAMES_DATA.find(g => g.id === gameId);
+
+            if (!game) {
+                document.getElementById('gameName').textContent = 'Error: Juego no encontrado.';
+                return;
+            }
+
+            // --- 2. Rellenar Header y Banner ---
+            document.getElementById('detailTitle').textContent = `RM Games | ${game.nombre}`;
+            document.getElementById('headerBgImage').src = game.portada_card || 'placeholder.jpg';
+            document.getElementById('gameCover').src = game.portada_miniatura || 'placeholder.jpg';
+            document.getElementById('gameName').textContent = game.nombre;
+
+            // --- 3. Botones de Acción (Dejados para compatibilidad, pero ocultos por CSS) ---
+            // Si en el futuro se quiere un link de descarga principal, se puede usar esta lógica:
+            const downloadButton = document.getElementById('downloadButton');
+            if (downloadButton && game.links_descarga && game.links_descarga[0]) {
+                 downloadButton.onclick = () => { window.location.href = game.links_descarga[0].url; };
+            }
+            
+            const trailerButton = document.getElementById('trailerButton');
+            if (trailerButton) {
+                trailerButton.onclick = () => { window.open(game.link_trailer || '#', '_blank'); };
+            }
+
+
+            // --- 4. Detalles en Línea (Plataforma, Peso, Valoraciones, Raxxor) ---
+            document.getElementById('gamePeso').textContent = game.peso || 'N/A';
+            document.getElementById('gameSteamRating').textContent = 'N/A Estrellas SteamDB'; 
+
+            const score = game.valoracion_metacritic;
+            const scoreBox = document.getElementById('gameMetacritic');
+            
+            scoreBox.textContent = score || 'N/A';
+            scoreBox.className = 'metacritic-score-box'; 
+
+            if (score === 'N/A' || !score) {
+                scoreBox.classList.add('na');
+            } else {
+                const numScore = parseInt(score);
+                
+                if (numScore >= 95) {
+                    scoreBox.classList.add('gold');
+                } else if (numScore >= 75) {
+                    scoreBox.classList.add('high');
+                } else if (numScore >= 50) {
+                    scoreBox.classList.add('mid');
+                } else if (numScore >= 0) {
+                    scoreBox.classList.add('low');
+                } else {
+                    scoreBox.classList.add('na');
+                }
+            }
+
+            // --- 5. Breve Descripción (Limitada) ---
+            const fullDesc = game.descripcion || 'No hay descripción disponible.';
+            const sentences = fullDesc.match(/[^.!?]+[.!?]/g) || [fullDesc];
+            let briefDesc = sentences.slice(0, 3).join('').trim();
+            if (briefDesc.length < 50 && fullDesc.length > 50) {
+                briefDesc = fullDesc.substring(0, Math.min(fullDesc.length, 150)) + (fullDesc.length > 150 ? '...' : '');
+            } else if (briefDesc.length === 0) {
+                 briefDesc = fullDesc;
+            }
+            document.getElementById('briefDescription').textContent = briefDesc;
+            
+            // --- 6. Sección de Detalles de Lanzamiento ---
+            document.getElementById('gameGenerosList').textContent = game.genero || 'N/A';
+            document.getElementById('gameReleaseDate').textContent = game.lanzamiento || 'N/A';
+            document.getElementById('gamePublisherDetails').textContent = game.publisher || 'N/A';
+            document.getElementById('supportPublisherName').textContent = game.publisher || 'N/A';
+
+
+            // --- 7. Contenido Principal (Flujo Único) ---
+            
+            // Sección "Acerca del Juego" (Muestra la descripción completa)
+            document.getElementById('gameReview').textContent = fullDesc;
+
+            // Lógica de Descargas y Configuración (NUEVA)
+            const linksContainer = document.getElementById('gameLinks');
+            linksContainer.innerHTML = ''; 
+            
+            if (game.links_descarga && game.links_descarga.length > 0) {
+                game.links_descarga.forEach(link => {
+                    const linkElement = document.createElement('a');
+                    linkElement.href = link.url;
+                    linkElement.target = '_blank';
+                    linkElement.className = (game.links_descarga.length > 1) ? 'download-link-btn part-link' : 'download-link-btn';
+                    linkElement.textContent = `⬇️ ${link.parte}`;
+                    linksContainer.appendChild(linkElement);
+                });
+            } else {
+                linksContainer.innerHTML = '<p style="color:var(--text-secondary);">No hay enlaces de descarga disponibles.</p>';
+            }
+
+            // Rellenar Contraseña e Instalación
+            document.getElementById('gamePassword').textContent = game.password || 'N/A';
+            document.getElementById('gameInstallation').textContent = game.instalacion || 'No hay instrucciones específicas.';
+
+
+            // Requisitos del PC
+            if (game.requisitos) {
+                document.getElementById('reqOS').textContent = game.requisitos.os || 'N/A';
+                document.getElementById('reqCPU').textContent = game.requisitos.procesador || 'N/A';
+                document.getElementById('reqRAM').textContent = game.requisitos.memoria || 'N/A';
+                document.getElementById('reqGPU').textContent = game.requisitos.graficos || 'N/A';
+                // Campos Adicionales
+                document.getElementById('reqAlmacenamiento').textContent = game.requisitos.almacenamiento || 'N/A';
+                // ELIMINADO: document.getElementById('reqDirectX').textContent = game.requisitos.directx || 'N/A';
+            } else {
+                document.getElementById('gameRequisitos').innerHTML = '<p style="color:var(--text-secondary);">Requisitos no especificados.</p>';
+            }
+
+            // Capturas de Pantalla
+            const screenshotsContainer = document.getElementById('screenshots');
+            screenshotsContainer.innerHTML = ''; 
+            
+            if (game.capturas && game.capturas.length > 0) {
+                game.capturas.forEach(url => {
+                    const img = document.createElement('img');
+                    img.src = url;
+                    img.alt = `Captura de ${game.nombre}`;
+                    screenshotsContainer.appendChild(img);
+                });
+            } else {
+                const img = document.createElement('img');
+                img.src = game.portada_miniatura;
+                img.alt = `Portada de ${game.nombre}`;
+                img.style.minWidth = '100%'; 
+                screenshotsContainer.appendChild(img);
+                document.getElementById('noScreenshots').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
