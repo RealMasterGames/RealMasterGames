@@ -302,7 +302,7 @@ const GAMES_DATA = [
         portada_card: 'image/sas_secure_tomorrow.png', // Placeholder (Necesitaría la imagen real)
         portada_miniatura: 'image/sas_secure_tomorrow.png',
         peso: '2.9 GB', 
-        peso_mb: 4000, 
+        peso_mb: 2900, 
         lanzamiento: '31 de octubre de 2008', // Fecha estimada de lanzamiento
         valoracion_metacritic: 'N/A', 
         descripcion: 'Un shooter táctico en primera persona donde te unes al Servicio Aéreo Especial (SAS) para neutralizar amenazas terroristas globales.',
@@ -334,7 +334,7 @@ const GAMES_DATA = [
         portada_card: 'image/r6_vegas.png', // Placeholder
         portada_miniatura: 'image/r6_vegas.png',
         peso: '4.53 GB', 
-        peso_mb: 7000, 
+        peso_mb: 4600, 
         lanzamiento: '20 de noviembre de 2006', // Fecha estimada de lanzamiento
         valoracion_metacritic: '85', 
         descripcion: 'El equipo Rainbow es enviado a Las Vegas para detener una serie de ataques terroristas, ofreciendo acción táctica intensa y comandos en tercera persona.',
@@ -366,7 +366,7 @@ const GAMES_DATA = [
         portada_card: 'image/r6_vegas2.png', // Placeholder
         portada_miniatura: 'image/r6_vegas2.png',
         peso: '4.68 GB', 
-        peso_mb: 10000, 
+        peso_mb: 4700, 
         lanzamiento: '17 de marzo de 2008', // Fecha estimada de lanzamiento
         valoracion_metacritic: '80', 
         descripcion: 'Secuela directa de Vegas. Asume el papel de Bishop, un miembro clave de Rainbow, mientras se enfrenta a una amenaza creciente en la ciudad del pecado.',
@@ -398,7 +398,7 @@ const GAMES_DATA = [
         portada_card: 'image/gtavc.png', // Placeholder
         portada_miniatura: 'image/gta_vc_r.png',
         peso: '1.7GB', 
-        peso_mb: 915, 
+        peso_mb: 1700, 
         lanzamiento: '27 de octubre de 2002', 
         valoracion_metacritic: '94', 
         descripcion: 'Revive la historia de Tommy Vercetti en los 80, en una versión de Vice City con mejoras gráficas y de jugabilidad no oficiales.',
@@ -430,7 +430,7 @@ const GAMES_DATA = [
         portada_card: 'image/gtasa2.png', // Placeholder
         portada_miniatura: 'image/gta_sa.png',
         peso: '2.7 GB', 
-        peso_mb: 3600, 
+        peso_mb: 2700, 
         lanzamiento: '26 de octubre de 2004', 
         valoracion_metacritic: '93', 
         descripcion: 'Carl "CJ" Johnson regresa a Los Santos para reunir a su familia y tomar el control de las calles en el estado ficticio de San Andreas.',
