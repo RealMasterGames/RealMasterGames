@@ -21,7 +21,16 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: El juego es portable. Solo descomprimir el archivo ZIP y ejecutar el "prototypef.exe" principal.',
         
-        capturas: ['https://via.placeholder.com/600x350/333/ffffff?text=Prototype+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/10150/0000008854.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/10150/0000008853.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/10150/0000008855.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/10150/0000008856.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/10150/0000008857.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/10150/0000008862.jpg'
+	
+	],
+
         requisitos: {
             os: 'Windows XP (SP3)/Vista (SP2)/7/8',
             procesador: 'Intel Core 2 Duo 2.6 GHz / AMD Athlon 64 X2 3800+',
@@ -31,13 +40,13 @@ const GAMES_DATA = [
         }
     },
 
-    // --- 2. SCARFACE: THE WORLD IS YOURS ---
+    // --- 2. SCARFACE: THE WORLD IS YOURS 2006 ---
     {
         id: 'scarface',
         nombre: 'Scarface: The World Is Yours',
-        appid: 'N/A', 
+        appid: '4113570', 
         portada_card: 'image/scarface.png',
-        portada_miniatura: 'image/scarface.png',
+        portada_miniatura: ['image/scarface.png'],
         peso: '2.17 GB', 
         peso_mb: 2170, 
         lanzamiento: '20 de septiembre de 2006',
@@ -53,7 +62,7 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo ZIP y ejecutar el .exe principal.',
         
-        capturas: ['https://via.placeholder.com/600x350/7A0413/ffffff?text=Scarface+Captura+1'],
+        capturas: ['https://cdn2.steamgriddb.com/hero_thumb/82d3149fc1f8d2305e7c6d56a6c5689d.jpg'],
         requisitos: {
             os: 'Windows 7 / 8.1 / 10',
             procesador: 'Pentium 4 2.8 GHz o AMD equivalente',
@@ -85,7 +94,16 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo RAR y ejecutar el .exe de la versión portable.',
         
-        capturas: ['https://via.placeholder.com/600x350/000000/ffffff?text=RE5+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/21690/ss_88c3dc8ebcdc75b1bfc588f9db597604110741a3.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/21690/ss_b45879022ff47044cfe8efe6ff6f5b52727330a4.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/21690/ss_ae5285a9d30103cc9a5ca107d4e9c597bbd0b6cd.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/21690/ss_a941c302f0855214a3514a09b6adeed52d9826ef.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/21690/ss_02eff0a56c74884c3cec532f77137fc0435e9864.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/21690/ss_ffd7ce1937f31f8dd42bcc5cebdc6081dee4ae11.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/21690/ss_14ed7b74f4f0c22990428b75bf1435619dba4452.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/21690/ss_6d3ce4c202e1233cdbbe08669ed2528bc2808f2e.jpg'
+	],
         requisitos: {
             os: 'Windows Vista (1GB) / Windows XP (512 Mb)',
             procesador: 'Intel Pentium AMD Athlon64 x2',
@@ -117,7 +135,14 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo RAR y ejecutar el .exe de la versión portable. Se recomienda configurar un mando.',
         
-        capturas: ['https://via.placeholder.com/600x350/301934/ffffff?text=DMC3+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/6550/0000002166.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/6550/0000002167.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/6550/0000002168.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/6550/0000002176.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/6550/0000002177.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/6550/0000002178.jpg'
+	],
         requisitos: {
             os: 'Windows 2000/XP/Vista/7/8',
             procesador: 'Pentium III 1 GHz o AMD Athlon',
@@ -151,7 +176,14 @@ const GAMES_DATA = [
         instalacion: `INSTALADOR: ABRIR CARPETA "Max Payne 3 Complete Edition", luego abrir el "setup.exe" y instalar.
 - ABRIR CARPETA "Max Payne 3 update" y abrir el "Max Payne 3 update 1.0.0.216 - 1.0.0.255" para actualizar el juego.`,
         
-        capturas: ['https://via.placeholder.com/600x350/4A4A4A/ffffff?text=MP3+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/204100/ss_84fc2ba217ce04ec4b782f9f5ccc09d20980f220.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/204100/ss_b442d79fbc45be2cb773d3de6f7b40fa5f126588.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/204100/ss_6e329c5ed6d471c55ef7e04c9aac309005bfa734.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/204100/ss_649a56eff153bd1ffe46795f5f20775b3625f96f.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/204100/ss_4729803db6c0e2b02fc79f9af60e757c80bc989e.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/204100/ss_a0106421eb18e18c598a93cd7192a3da9b1c6031.jpg'
+	],
         requisitos: {
             os: 'Windows 7 (32 y 64 bits)',
             procesador: 'Intel Dual Core 2.4 GHZ o AMD Dual Core 2.6 GHZ',
@@ -183,7 +215,12 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo RAR y ejecutar el .exe principal.',
         
-        capturas: ['https://via.placeholder.com/600x350/1C1C1C/ffffff?text=MP2+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12150/0000003271.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12150/0000003272.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12150/0000003273.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12150/0000003274.jpg'
+	],
         requisitos: {
             os: 'Windows 2000 / XP',
             procesador: 'PIII / Athlon a 1 GHz o Celeron / Duron a 1.2 GHz',
@@ -215,7 +252,14 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descargar y ejecutar el .exe principal. (Verificar si es un ZIP o RAR al descargar).',
         
-        capturas: ['https://via.placeholder.com/600x350/000000/ffffff?text=MP1+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12140/0000003256.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12140/0000003257.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12140/0000003258.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12140/0000003259.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12140/0000003260.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12140/0000003262.jpg'
+	],
         requisitos: {
             os: 'Windows 2000 / XP',
             procesador: 'AMD / Intel a 450 MHz',
@@ -248,7 +292,14 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE (2 Partes): Descargar ambas partes (.zip y .z01) en la misma carpeta. Descomprimir la parte .zip. Ejecutar el .exe principal.',
         
-        capturas: ['https://via.placeholder.com/600x350/800080/ffffff?text=Trepang2+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1164940/ss_e2818e2e76230d6f29487516e736d91c64911601.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1164940/ss_677484810af8426e261c01c2cbe1da03c3fddbc1.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1164940/ss_dab2830e466ea9a087896dc82d948ba1bf415236.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1164940/ss_effa859d249e38a46a2b21445984c860891b621a.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1164940/ss_f00868bcb488369ce504c6a764be101e0c2e0532.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1164940/ss_9dca9067d70b90938bc70006b6adcfdab90d3654.jpg'
+	],
         requisitos: {
             os: 'Windows 10 64 bit',
             procesador: 'Intel Core i5-2550K o AMD FX-8370',
@@ -280,7 +331,14 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo ZIP y ejecutar el .exe principal.',
         
-        capturas: ['https://via.placeholder.com/600x350/00FFFF/000000?text=JC2+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/8190/ss_8d164f548b7861512aa6e13cd8d274098ade7e92.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/8190/ss_1e816081cb2576e404ff64c7754b1cb70cb7a937.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/8190/ss_99b24792c4e2da969651e1c18563b11f3ebc603c.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/8190/ss_09ce43830f4566293ba29349126464f0a751239e.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/8190/ss_726fac86f8c8cf350c7c3019cf5753e8e4a6a958.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/8190/ss_dae76675f5d4caaea96dcd3f64fead5c3ba50362.jpg'
+	],
         requisitos: {
             os: 'Windows Vista (Windows XP no está soportado)',
             procesador: 'CPU Dual-core con SSE3 (Athlon 64 X2 4200+ / Pentium D a 3 GHz)',
@@ -302,7 +360,7 @@ const GAMES_DATA = [
         portada_card: 'image/sas_secure_tomorrow.png', // Placeholder (Necesitaría la imagen real)
         portada_miniatura: 'image/sas_secure_tomorrow.png',
         peso: '2.9 GB', 
-        peso_mb: 2900, 
+        peso_mb: 4000, 
         lanzamiento: '31 de octubre de 2008', // Fecha estimada de lanzamiento
         valoracion_metacritic: 'N/A', 
         descripcion: 'Un shooter táctico en primera persona donde te unes al Servicio Aéreo Especial (SAS) para neutralizar amenazas terroristas globales.',
@@ -316,13 +374,20 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo y ejecutar el "GAME.EXE".',
         
-        capturas: ['https://via.placeholder.com/600x350/008080/ffffff?text=SAS+Captura+1'],
+        capturas: [
+	'https://www.myabandonware.com/media/screenshots/s/sas-secure-tomorrow-1ai4/sas-secure-tomorrow_2.jpg',
+	'https://www.myabandonware.com/media/screenshots/s/sas-secure-tomorrow-1ai4/sas-secure-tomorrow_10.jpg',
+	'https://www.myabandonware.com/media/screenshots/s/sas-secure-tomorrow-1ai4/sas-secure-tomorrow_9.jpg',
+	'https://www.myabandonware.com/media/screenshots/s/sas-secure-tomorrow-1ai4/sas-secure-tomorrow_3.jpg',
+	'https://www.myabandonware.com/media/screenshots/s/sas-secure-tomorrow-1ai4/sas-secure-tomorrow_7.jpg',
+	'https://www.myabandonware.com/media/screenshots/s/sas-secure-tomorrow-1ai4/sas-secure-tomorrow_6.jpg'
+	],
         requisitos: {
             os: 'Windows XP/Vista/7',
             procesador: 'Pentium 4 a 2.0 GHz',
             memoria: '1 GB RAM',
             graficos: '128 MB GeForce FX5700 o Radeon 9700',
-            almacenamiento: '5 GB'
+            almacenamiento: '4 GB'
         }
     },
 
@@ -334,7 +399,7 @@ const GAMES_DATA = [
         portada_card: 'image/r6_vegas.png', // Placeholder
         portada_miniatura: 'image/r6_vegas.png',
         peso: '4.53 GB', 
-        peso_mb: 4600, 
+        peso_mb: 7000, 
         lanzamiento: '20 de noviembre de 2006', // Fecha estimada de lanzamiento
         valoracion_metacritic: '85', 
         descripcion: 'El equipo Rainbow es enviado a Las Vegas para detener una serie de ataques terroristas, ofreciendo acción táctica intensa y comandos en tercera persona.',
@@ -348,7 +413,14 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo y ejecutar el ejecutable en: \\Binaries\\R6Vegas_Game.exe',
         
-        capturas: ['https://via.placeholder.com/600x350/B0C4DE/000000?text=R6+Vegas+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/13540/0000003731.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/13540/0000003726.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/13540/0000003727.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/13540/0000003728.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/13540/0000003729.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/13540/0000003730.jpg'
+	],
         requisitos: {
             os: 'Windows XP (SP2)/Vista/7',
             procesador: '2.2 GHz Pentium 4 con Hyper Treading o AMD Athlon 2200',
@@ -366,7 +438,7 @@ const GAMES_DATA = [
         portada_card: 'image/r6_vegas2.png', // Placeholder
         portada_miniatura: 'image/r6_vegas2.png',
         peso: '4.68 GB', 
-        peso_mb: 4700, 
+        peso_mb: 10000, 
         lanzamiento: '17 de marzo de 2008', // Fecha estimada de lanzamiento
         valoracion_metacritic: '80', 
         descripcion: 'Secuela directa de Vegas. Asume el papel de Bishop, un miembro clave de Rainbow, mientras se enfrenta a una amenaza creciente en la ciudad del pecado.',
@@ -380,7 +452,14 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo y ejecutar el ejecutable en: \\Binaries\\R6Vegas2_Game.exe',
         
-        capturas: ['https://via.placeholder.com/600x350/4682B4/ffffff?text=R6+Vegas+2+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/15120/0000003700.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/15120/0000003701.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/15120/0000003702.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/15120/0000003703.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/15120/0000003704.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/15120/0000003705.jpg'
+	],
         requisitos: {
             os: 'Windows XP (SP2)/Vista/7',
             procesador: '2.2 GHz Pentium 4 con Hyper Treading o AMD Athlon 2200',
@@ -396,9 +475,9 @@ const GAMES_DATA = [
         nombre: 'GTA Vice City Mod Remaster',
         appid: '12110', 
         portada_card: 'image/gtavc.png', // Placeholder
-        portada_miniatura: 'image/gtavc.png',
+        portada_miniatura: 'image/gta_vc_r.png',
         peso: '1.7GB', 
-        peso_mb: 1700, 
+        peso_mb: 915, 
         lanzamiento: '27 de octubre de 2002', 
         valoracion_metacritic: '94', 
         descripcion: 'Revive la historia de Tommy Vercetti en los 80, en una versión de Vice City con mejoras gráficas y de jugabilidad no oficiales.',
@@ -412,13 +491,20 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo RAR y ejecutar el .exe principal del juego modificado.',
         
-        capturas: ['https://via.placeholder.com/600x350/FF00FF/ffffff?text=VC+Remaster+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12110/0000003313.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12110/0000003314.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12110/0000003315.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12110/0000003316.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12110/0000003317.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12110/0000003320.jpg'
+	],
         requisitos: {
             os: 'Microsoft Windows 2000 / XP',
             procesador: 'Intel Pentium III a 800 MHz / AMD Athlon a 800 MHz o superior',
             memoria: '128 MB de RAM',
             graficos: 'Dispositivo de 32 MB ("GeForce" o superior)',
-            almacenamiento: '3 GB'
+            almacenamiento: '915 MB'
         }
     },
     
@@ -428,9 +514,9 @@ const GAMES_DATA = [
         nombre: 'GTA San Andreas',
         appid: '12120', 
         portada_card: 'image/gtasa2.png', // Placeholder
-        portada_miniatura: 'image/gtasa2.png',
+        portada_miniatura: 'image/gtasa.png',
         peso: '2.7 GB', 
-        peso_mb: 2700, 
+        peso_mb: 3600, 
         lanzamiento: '26 de octubre de 2004', 
         valoracion_metacritic: '93', 
         descripcion: 'Carl "CJ" Johnson regresa a Los Santos para reunir a su familia y tomar el control de las calles en el estado ficticio de San Andreas.',
@@ -444,15 +530,20 @@ const GAMES_DATA = [
         password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo y ejecutar el .exe principal.',
         
-        capturas: ['https://via.placeholder.com/600x350/0000FF/ffffff?text=SA+Captura+1'],
+        capturas: [
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12120/0000003303.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12120/0000003304.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12120/0000003305.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12120/0000003306.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12120/0000003307.jpg',
+	'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12120/0000003311.jpg'
+	],
         requisitos: {
             os: 'Microsoft Windows 2000/XP',
             procesador: '1Ghz Pentium III ó AMD Athlon Procesador',
             memoria: '256MB de RAM',
             graficos: 'Tarjeta de video de 64MB (Geforce 3 ó superior)',
-            almacenamiento: '5 GB'
+            almacenamiento: '3.6 GB'
         }
     }
 ];
-
-
