@@ -322,7 +322,7 @@ const GAMES_DATA = [
             procesador: 'Pentium 4 a 2.0 GHz',
             memoria: '1 GB RAM',
             graficos: '128 MB GeForce FX5700 o Radeon 9700',
-            almacenamiento: '4 GB'
+            almacenamiento: '5 GB'
         }
     },
 
@@ -418,7 +418,7 @@ const GAMES_DATA = [
             procesador: 'Intel Pentium III a 800 MHz / AMD Athlon a 800 MHz o superior',
             memoria: '128 MB de RAM',
             graficos: 'Dispositivo de 32 MB ("GeForce" o superior)',
-            almacenamiento: '915 MB'
+            almacenamiento: '3 GB'
         }
     },
     
@@ -450,7 +450,8 @@ const GAMES_DATA = [
             procesador: '1Ghz Pentium III ó AMD Athlon Procesador',
             memoria: '256MB de RAM',
             graficos: 'Tarjeta de video de 64MB (Geforce 3 ó superior)',
-            almacenamiento: '3.6 GB'
+            almacenamiento: '5 GB'
         }
     }
 ];
+
