@@ -18,7 +18,7 @@ const GAMES_DATA = [
         links_descarga: [
             { parte: 'Descarga Completa', url: 'https://www.mediafire.com/file/ev4m7z428ok0ypg/Prototype.zip' }
         ],
-        password: 'N/A', // MODIFICADO
+        password: 'N/A', 
         instalacion: 'PORTABLE: El juego es portable. Solo descomprimir el archivo ZIP y ejecutar el "prototypef.exe" principal.',
         
         capturas: ['https://via.placeholder.com/600x350/333/ffffff?text=Prototype+Captura+1'],
@@ -50,7 +50,7 @@ const GAMES_DATA = [
         links_descarga: [
             { parte: 'Descarga Completa', url: 'https://www.mediafire.com/file/ttqk6fy5e8ecu1y/Scarface+Español.zip/file' }
         ],
-        password: 'N/A', // MODIFICADO
+        password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo ZIP y ejecutar el .exe principal.',
         
         capturas: ['https://via.placeholder.com/600x350/7A0413/ffffff?text=Scarface+Captura+1'],
@@ -82,7 +82,7 @@ const GAMES_DATA = [
         links_descarga: [
             { parte: 'Descarga Completa', url: 'https://www.mediafire.com/file/yintjgtfnnnvl4k/RE5+-+ONLY+GAMER.rar/file' }
         ],
-        password: 'N/A', // MODIFICADO
+        password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo RAR y ejecutar el .exe de la versión portable.',
         
         capturas: ['https://via.placeholder.com/600x350/000000/ffffff?text=RE5+Captura+1'],
@@ -114,7 +114,7 @@ const GAMES_DATA = [
         links_descarga: [
             { parte: 'Descarga Completa', url: 'https://www.mediafire.com/file/4wp5n54vkor3udr/Devil+May+Cry+3+Special+Edition.rar/file' }
         ],
-        password: 'N/A', // MODIFICADO
+        password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo RAR y ejecutar el .exe de la versión portable. Se recomienda configurar un mando.',
         
         capturas: ['https://via.placeholder.com/600x350/301934/ffffff?text=DMC3+Captura+1'],
@@ -180,7 +180,7 @@ const GAMES_DATA = [
         links_descarga: [
             { parte: 'Descarga Completa', url: 'https://www.mediafire.com/file/kficgjh9y3m51kg/Max+Payne+2+The+Fall+of+Max+Payne.rar/file' }
         ],
-        password: 'N/A', // MODIFICADO
+        password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo RAR y ejecutar el .exe principal.',
         
         capturas: ['https://via.placeholder.com/600x350/1C1C1C/ffffff?text=MP2+Captura+1'],
@@ -212,7 +212,7 @@ const GAMES_DATA = [
         links_descarga: [
             { parte: 'Descarga Completa', url: 'https://drive.usercontent.google.com/download?id=1osRObWT7EKLQwt9kzGnv47_Q-IPpSFkS&export=download&authuser=0' }
         ],
-        password: 'N/A', // MODIFICADO
+        password: 'N/A', 
         instalacion: 'PORTABLE: Descargar y ejecutar el .exe principal. (Verificar si es un ZIP o RAR al descargar).',
         
         capturas: ['https://via.placeholder.com/600x350/000000/ffffff?text=MP1+Captura+1'],
@@ -245,7 +245,7 @@ const GAMES_DATA = [
             { parte: 'Parte 1', url: 'https://www.mediafire.com/file/s145y57g3a8u7px/Trepang2.zip/file' },
             { parte: 'Parte 2', url: 'https://www.mediafire.com/file/leyf8dple73n1m4/Trepang2.z01/file' }
         ],
-        password: 'N/A', // MODIFICADO
+        password: 'N/A', 
         instalacion: 'PORTABLE (2 Partes): Descargar ambas partes (.zip y .z01) en la misma carpeta. Descomprimir la parte .zip. Ejecutar el .exe principal.',
         
         capturas: ['https://via.placeholder.com/600x350/800080/ffffff?text=Trepang2+Captura+1'],
@@ -277,7 +277,7 @@ const GAMES_DATA = [
         links_descarga: [
             { parte: 'Descarga Completa', url: 'https://www.mediafire.com/file/5r4vi712hzosuoe/Just%20Cause%202.zip' }
         ],
-        password: 'N/A', // MODIFICADO
+        password: 'N/A', 
         instalacion: 'PORTABLE: Descomprimir el archivo ZIP y ejecutar el .exe principal.',
         
         capturas: ['https://via.placeholder.com/600x350/00FFFF/000000?text=JC2+Captura+1'],
@@ -287,7 +287,170 @@ const GAMES_DATA = [
             memoria: '2 GB RAM',
             graficos: 'Tarjeta compatible con DX10 y 256 MB (nVidia GeForce 8800 / ATI Radeon HD 2600 Pro)',
             almacenamiento: '5 GB',
-            // Eliminado DirectX de aquí (opcional, ya que se quita del HTML)
+        }
+    },
+    
+    // ===========================================
+    // === JUEGOS NUEVOS AGREGADOS ===
+    // ===========================================
+
+    // --- 10. SAS: SECURE TOMORROW ---
+    {
+        id: 'sas_secure_tomorrow',
+        nombre: 'SAS: Secure Tomorrow',
+        appid: 'N/A', 
+        portada_card: 'image/sas_secure_tomorrow.png', // Placeholder (Necesitaría la imagen real)
+        portada_miniatura: 'image/sas_secure_tomorrow.png',
+        peso: '2.9 GB', 
+        peso_mb: 4000, 
+        lanzamiento: '31 de octubre de 2008', // Fecha estimada de lanzamiento
+        valoracion_metacritic: 'N/A', 
+        descripcion: 'Un shooter táctico en primera persona donde te unes al Servicio Aéreo Especial (SAS) para neutralizar amenazas terroristas globales.',
+        genero: 'FPS, Táctico, Shooter',
+        publisher: 'City Interactive', 
+        modo_juego: 'Un Jugador',
+        
+        links_descarga: [
+            { parte: 'Descarga Completa', url: 'https://drive.google.com/file/d/1sXK0qilG1HWn28l_k53rzRm9SNMyUrfF/view' }
+        ],
+        password: 'N/A', 
+        instalacion: 'PORTABLE: Descomprimir el archivo y ejecutar el "GAME.EXE".',
+        
+        capturas: ['https://via.placeholder.com/600x350/008080/ffffff?text=SAS+Captura+1'],
+        requisitos: {
+            os: 'Windows XP/Vista/7',
+            procesador: 'Pentium 4 a 2.0 GHz',
+            memoria: '1 GB RAM',
+            graficos: '128 MB GeForce FX5700 o Radeon 9700',
+            almacenamiento: '4 GB'
+        }
+    },
+
+    // --- 11. RAINBOW SIX: VEGAS ---
+    {
+        id: 'r6_vegas',
+        nombre: 'Rainbow Six: Vegas',
+        appid: '13930', 
+        portada_card: 'image/r6_vegas.png', // Placeholder
+        portada_miniatura: 'image/r6_vegas.png',
+        peso: '4.53 GB', 
+        peso_mb: 7000, 
+        lanzamiento: '20 de noviembre de 2006', // Fecha estimada de lanzamiento
+        valoracion_metacritic: '85', 
+        descripcion: 'El equipo Rainbow es enviado a Las Vegas para detener una serie de ataques terroristas, ofreciendo acción táctica intensa y comandos en tercera persona.',
+        genero: 'FPS, Táctico, Shooter',
+        publisher: 'Ubisoft', 
+        modo_juego: 'Un Jugador, Multijugador',
+        
+        links_descarga: [
+            { parte: 'Descarga Completa', url: 'https://www.mediafire.com/file/kjxvsm734qep72f/Tom+Clancy%27s+Rainbow+Six+Vegas.zip/file' }
+        ],
+        password: 'N/A', 
+        instalacion: 'PORTABLE: Descomprimir el archivo y ejecutar el ejecutable en: \\Binaries\\R6Vegas_Game.exe',
+        
+        capturas: ['https://via.placeholder.com/600x350/B0C4DE/000000?text=R6+Vegas+Captura+1'],
+        requisitos: {
+            os: 'Windows XP (SP2)/Vista/7',
+            procesador: '2.2 GHz Pentium 4 con Hyper Treading o AMD Athlon 2200',
+            memoria: '1 GB (XP) / 2 GB (Vista/7) RAM',
+            graficos: '128 MB, con soporte para Shader 3.0',
+            almacenamiento: '7 GB'
+        }
+    },
+
+    // --- 12. RAINBOW SIX: VEGAS 2 ---
+    {
+        id: 'r6_vegas2',
+        nombre: 'Rainbow Six: Vegas 2',
+        appid: '6440', 
+        portada_card: 'image/r6_vegas2.png', // Placeholder
+        portada_miniatura: 'image/r6_vegas2.png',
+        peso: '4.68 GB', 
+        peso_mb: 10000, 
+        lanzamiento: '17 de marzo de 2008', // Fecha estimada de lanzamiento
+        valoracion_metacritic: '80', 
+        descripcion: 'Secuela directa de Vegas. Asume el papel de Bishop, un miembro clave de Rainbow, mientras se enfrenta a una amenaza creciente en la ciudad del pecado.',
+        genero: 'FPS, Táctico, Shooter',
+        publisher: 'Ubisoft', 
+        modo_juego: 'Un Jugador, Multijugador',
+        
+        links_descarga: [
+            { parte: 'Descarga Completa', url: 'https://www.mediafire.com/file/74u1xknyqo0ym9t/Tom_Clancy%27s_Rainbow_Six_Vegas_2.zip/file' }
+        ],
+        password: 'N/A', 
+        instalacion: 'PORTABLE: Descomprimir el archivo y ejecutar el ejecutable en: \\Binaries\\R6Vegas2_Game.exe',
+        
+        capturas: ['https://via.placeholder.com/600x350/4682B4/ffffff?text=R6+Vegas+2+Captura+1'],
+        requisitos: {
+            os: 'Windows XP (SP2)/Vista/7',
+            procesador: '2.2 GHz Pentium 4 con Hyper Treading o AMD Athlon 2200',
+            memoria: '1 GB (XP) / 2 GB (Vista/7) RAM',
+            graficos: '128 MB, con soporte para Shader 3.0',
+            almacenamiento: '10 GB'
+        }
+    },
+    
+    // --- 13. GTA VICE CITY (MOD REMASTERIZADO) ---
+    {
+        id: 'gta_vc_r',
+        nombre: 'GTA Vice City Mod Remaster',
+        appid: '12110', 
+        portada_card: 'image/gtavc.png', // Placeholder
+        portada_miniatura: 'image/gta_vc_r.png',
+        peso: '1.7GB', 
+        peso_mb: 915, 
+        lanzamiento: '27 de octubre de 2002', 
+        valoracion_metacritic: '94', 
+        descripcion: 'Revive la historia de Tommy Vercetti en los 80, en una versión de Vice City con mejoras gráficas y de jugabilidad no oficiales.',
+        genero: 'Mundo Abierto, Acción, Aventura',
+        publisher: 'Rockstar Games', 
+        modo_juego: 'Un Jugador',
+        
+        links_descarga: [
+            { parte: 'Descarga Completa', url: 'http://www.mediafire.com/file/9e5yhsf3887hipx/Gta+vr+remstd+CR.rar/file' }
+        ],
+        password: 'N/A', 
+        instalacion: 'PORTABLE: Descomprimir el archivo RAR y ejecutar el .exe principal del juego modificado.',
+        
+        capturas: ['https://via.placeholder.com/600x350/FF00FF/ffffff?text=VC+Remaster+Captura+1'],
+        requisitos: {
+            os: 'Microsoft Windows 2000 / XP',
+            procesador: 'Intel Pentium III a 800 MHz / AMD Athlon a 800 MHz o superior',
+            memoria: '128 MB de RAM',
+            graficos: 'Dispositivo de 32 MB ("GeForce" o superior)',
+            almacenamiento: '915 MB'
+        }
+    },
+    
+    // --- 14. GTA SAN ANDREAS ---
+    {
+        id: 'gta_sa',
+        nombre: 'GTA San Andreas',
+        appid: '12120', 
+        portada_card: 'image/gtasa2.png', // Placeholder
+        portada_miniatura: 'image/gta_sa.png',
+        peso: '2.7 GB', 
+        peso_mb: 3600, 
+        lanzamiento: '26 de octubre de 2004', 
+        valoracion_metacritic: '93', 
+        descripcion: 'Carl "CJ" Johnson regresa a Los Santos para reunir a su familia y tomar el control de las calles en el estado ficticio de San Andreas.',
+        genero: 'Mundo Abierto, Acción, Aventura',
+        publisher: 'Rockstar Games', 
+        modo_juego: 'Un Jugador',
+        
+        links_descarga: [
+            { parte: 'Descarga Completa', url: 'https://drive.google.com/file/d/1rUv6cYpPR2lkxnsa9WTj0gOCHyZpAKH_/view' }
+        ],
+        password: 'N/A', 
+        instalacion: 'PORTABLE: Descomprimir el archivo y ejecutar el .exe principal.',
+        
+        capturas: ['https://via.placeholder.com/600x350/0000FF/ffffff?text=SA+Captura+1'],
+        requisitos: {
+            os: 'Microsoft Windows 2000/XP',
+            procesador: '1Ghz Pentium III ó AMD Athlon Procesador',
+            memoria: '256MB de RAM',
+            graficos: 'Tarjeta de video de 64MB (Geforce 3 ó superior)',
+            almacenamiento: '3.6 GB'
         }
     }
 ];
