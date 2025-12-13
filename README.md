@@ -29,5 +29,5 @@ Agradecemos cualquier informe de errores o sugerencia para mejorar la experienci
 
 * **Enlaces Rotos:** Si encuentras un enlace de descarga caído, por favor, crea un **Issue** en este repositorio.
 * **Errores en la Web:** Para fallos en la interfaz o la funcionalidad (filtros, tarjetas), crea un **Issue** para que el Administrador de la Web pueda revisarlo.
-* **Tu juego!!:** Tambien puedes subir tu juego favorito a mediafire o drive, y claro, revisar primero si ya esta en el catalogo, si no esta subelo y dejarlo en **Issue** para que el Administrador de la web pueda subirlo dejando sus respectivos creditos al Uploader!! (tu🤝)
+* **Tu juego!!:** Tambien puedes subir tu juego favorito a mediafire o drive, y claro, revisa primero si ya esta en el catalogo, si no esta subelo y deja lo en **Issue** para que el Administrador de la web pueda subirlo dejando sus respectivos creditos al Uploader!! (tu🤝)
 ¡Gracias por visitar RealMasterGames!
